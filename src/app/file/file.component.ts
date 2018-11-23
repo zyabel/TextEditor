@@ -11,8 +11,9 @@ export class FileComponent implements OnInit {
 
   selectedText: string = '';
 
-  constructor(private textService: TextService) {
-  }
+  synonyms: {};
+
+  constructor(private textService: TextService) {}
 
   ngOnInit() {
     this.textService.getMockText().then((result) => this.textDefault = result);
@@ -22,6 +23,14 @@ export class FileComponent implements OnInit {
     let text = '';
     if (window.getSelection) {
       text = window.getSelection().toString();
+
+      // check for selected word
+      if (text.length) {
+        this.textService.getSynonyms(text)
+          .subscribe(data => {
+            this.synonyms = data;
+        })
+      }
     } else if (document.selection && document.selection.type != 'Control') {
       text = document.selection.createRange().text;
     }
@@ -29,6 +38,10 @@ export class FileComponent implements OnInit {
   }
 
   formatDocument(type) {
-    //method for text formatting
+    document.execCommand(type, false);
+  }
+
+  getSynonymValue(synonym) {
+    document.execCommand('insertText', false, synonym)
   }
 }
