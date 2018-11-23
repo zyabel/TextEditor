@@ -1,4 +1,11 @@
 <app-control-panel (formatAction)="formatDocument($event)"></app-control-panel>
-<div class="file" contenteditable="true" (click)="showSelectedText()">
+<div class="file" contenteditable="true" (click)="getSelectedText()">
   {{textDefault}}
+</div>
+<div class="form-group" *ngIf="isShow">
+  <label>Synonyms:</label>
+  <select (change)="getSelectedSynonym($event.target.value)">
+    <option disabled>Select synonyms</option>
+    <option *ngFor="let word of synonyms">{{word.word}}</option>
+  </select>
 </div>

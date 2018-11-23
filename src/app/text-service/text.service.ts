@@ -16,6 +16,7 @@ export class TextService {
     });
   }
 
+  // method for getting the synonyms of selected part of a text
   getSynonyms(synonym: string): Observable<object> {
     return this.http.get(`https://api.datamuse.com/words?ml=${synonym}`);
   }

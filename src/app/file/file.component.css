@@ -9,8 +9,19 @@
 
 .file {
   width: 600px;
-  flex-grow: 1;
   background-color: #fff;
   border: 1px solid #e4dede;
   padding: 20px;
+}
+
+.form-group {
+  width: 600px;
+  background-color: #fff;
+  border: 1px solid #e4dede;
+  padding: 20px;
+}
+select {
+  height: 20px;
+  width: 300px;
+  margin-left: 30px;
 }
