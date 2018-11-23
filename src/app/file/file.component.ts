@@ -52,11 +52,13 @@ export class FileComponent implements OnInit {
   // method for text formatting
   formatDocument(type): void {
     document.execCommand(type, false);
+    this.isShow = false;
   }
 
   // method gets the value of synonym and replace the selected word in the text
   getSelectedSynonym(synonym): void {
-    document.execCommand('insertText', false, synonym);
-    this.isShow = false;
+    if (synonym.length)
+      document.execCommand('insertText', false, synonym);
+      this.isShow = false;
   }
 }
