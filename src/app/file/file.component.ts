@@ -7,12 +7,28 @@ import { TextService } from '../text-service/text.service';
   styleUrls: ['./file.component.css']
 })
 export class FileComponent implements OnInit {
-  text = '';
+  textDefault = '';
+
+  selectedText: string = '';
 
   constructor(private textService: TextService) {
   }
 
   ngOnInit() {
-    this.textService.getMockText().then((result) => this.text = result);
+    this.textService.getMockText().then((result) => this.textDefault = result);
+  }
+
+  showSelectedText(oField) {
+    let text = '';
+    if (window.getSelection) {
+      text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != 'Control') {
+      text = document.selection.createRange().text;
+    }
+    this.selectedText = text;
+  }
+
+  formatDocument(type) {
+    //method for text formatting
   }
 }

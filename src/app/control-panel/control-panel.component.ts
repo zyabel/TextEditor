@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
   styleUrls: ['./control-panel.component.css']
 })
-export class ControlPanelComponent implements OnInit {
-  constructor() {
-  }
+export class ControlPanelComponent {
+  @Output() formatAction: EventEmitter<{}> = new EventEmitter;
 
-  ngOnInit() {
-  }
+  onClick(type: string): void {
+    this.formatAction.emit(type);
+  } 
 }

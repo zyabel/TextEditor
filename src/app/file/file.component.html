@@ -1,3 +1,4 @@
-<div class="file">
-  {{text}}
+<app-control-panel (formatAction)="formatDocument($event)"></app-control-panel>
+<div class="file" contenteditable="true" (click)="showSelectedText()">
+  {{textDefault}}
 </div>
