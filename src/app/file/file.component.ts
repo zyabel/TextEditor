@@ -35,16 +35,13 @@ export class FileComponent implements OnInit {
     if (window.getSelection) {
       text = window.getSelection().toString();
 
-      // check for selected word
-      if (text.length) {
-        this.isShow = true;
-        this.textService.getSynonyms(text)
-          .subscribe((data: Synonym) => {
-            this.synonyms = data;
-        })
-      }
-    } else if (document.selection && document.selection.type != 'Control') {
-      text = document.selection.createRange().text;
+    // check for selected word
+    if (text.length) {
+      this.isShow = true;
+      this.textService.getSynonyms(text)
+        .subscribe((data: Synonym) => {
+          this.synonyms = data;
+      })
     }
     this.selectedText = text;
   }
